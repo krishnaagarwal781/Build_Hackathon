@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from "react";
-import Navbar from "../../src/components/Navbar/Navbar";
+import Navbar2 from "../components/Navbar/Navbar2";
 import useSBTApi from "../../hooks/userSBT";
 
 export default function AllSBTs() {
@@ -33,7 +33,7 @@ export default function AllSBTs() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar2 />
       <main className="container mx-auto p-6">
         <h2 className="text-2xl font-bold mb-4">All Soulbound Tokens</h2>
         {loading ? (

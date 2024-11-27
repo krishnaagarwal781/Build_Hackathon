@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Navbar2 from "../components/Navbar/Navbar2";
 import {
   AlertCircle,
   CheckCircle2,
@@ -9,17 +10,13 @@ import {
   Wallet,
   Lock,
 } from "lucide-react";
-
-import Navbar2 from "./components/Navbar/Navbar2";
-const FIXED_WALLET = "4a52d4fcba8de350ab1bf869b163d7e9fd07c541";
-const API_KEY =
-  "6afc71753077b8204e941ef3ef52a5673dfa3bcd5abde5328f707ea0ade370422de156d108780a6f8897a577038192c13ffa78d81cf46e442eec758d51c66134bb6003";
-
-const OnChainCertification = () => {
+const MintSbt = () => {
   const [recipientAddress, setRecipientAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState({ status: "", message: "" });
-
+  const FIXED_WALLET = "4a52d4fcba8de350ab1bf869b163d7e9fd07c541";
+  const API_KEY =
+    "6afc71753077b8204e941ef3ef52a5673dfa3bcd5abde5328f707ea0ade370422de156d108780a6f8897a577038192c13ffa78d81cf46e442eec758d51c66134bb6003";
   const handleMint = async () => {
     if (!recipientAddress) {
       setResult({
@@ -84,24 +81,11 @@ const OnChainCertification = () => {
       setLoading(false);
     }
   };
-
   return (
     <div className="min-h-screen">
       <Navbar2 />
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 px-4">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 px-4 py-4">
         <div className="max-w-3xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <div className="flex justify-center mb-4">
-              <Award className="h-16 w-16 text-indigo-600" />
-            </div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">
-              OnChain Certification
-            </h1>
-            <p className="text-lg text-gray-600">
-              Secure Your Achievement on the Blockchain
-            </p>
-          </div>
 
           {/* Main Card */}
           <div className="bg-white rounded-2xl shadow-xl p-8">
@@ -110,7 +94,7 @@ const OnChainCertification = () => {
               <div className="flex items-center mb-2">
                 <Lock className="h-5 w-5 text-gray-500 mr-2" />
                 <h3 className="font-medium text-gray-700">
-                  System Wallet Address
+                  Issuer Wallet Address
                 </h3>
               </div>
               <div className="bg-white p-3 rounded border border-gray-200">
@@ -177,7 +161,7 @@ const OnChainCertification = () => {
                 </div>
               ) : (
                 <>
-                  <span>Mint Certification</span>
+                  <span>Issue Certification</span>
                   <ChevronRight className="h-5 w-5" />
                 </>
               )}
@@ -246,4 +230,4 @@ const OnChainCertification = () => {
   );
 };
 
-export default OnChainCertification;
+export default MintSbt;

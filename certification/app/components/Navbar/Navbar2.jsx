@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { FileUser } from "lucide-react";
+import { Award } from "lucide-react";
 const Navbar2 = () => (
   <div className="p-4 bg-white text-black">
     <div className="container mx-auto gap-4 flex justify-between items-center">
-    <h1 className="text-2xl font-bold flex items-center justify-center gap-2">
-        <FileUser className="h-8 w-8 text-indigo-600" />
+      <h1 className="text-3xl font-mono font-extrabold flex items-center justify-center gap-2 text-[#283593]">
+        <Award className="h-9 w-9 text-[#283593]" />
         Certify
       </h1>
       <div className="flex gap-4">
@@ -13,6 +13,7 @@ const Navbar2 = () => (
         <Link href="/ownership-check">Ownership Checker</Link>
         <Link href="/all-sbt">All id</Link>
         <Link href="/transfer-sbt">Transfer SBt id</Link>
+        <Link href="/mint-sbt">Mint SBt</Link>
       </div>
       <button className="bg-zinc-950 border-2 text-white font-mono rounded-full py-3 px-5 hover:rounded-2xl">
         <Link href="/getStarted">Get Started</Link>

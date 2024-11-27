@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Navbar from "../../src/components/Navbar/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 import useSBTApi from "../../hooks/userSBT";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

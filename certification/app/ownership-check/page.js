@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import { useState } from "react";
-import Navbar from "../../src/components/Navbar/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 import useSBTApi from "../../hooks/userSBT";
 
 export default function OwnershipChecker() {
@@ -47,9 +47,15 @@ export default function OwnershipChecker() {
         {ownership && (
           <div className="mt-6 bg-green-100 p-4 rounded">
             <h3 className="font-bold">Ownership Details:</h3>
-            <p><strong>Owner:</strong> {ownership.owner}</p>
-            <p><strong>Token ID:</strong> {ownership.tokenID}</p>
-            <p><strong>Metadata:</strong> {ownership.metadata}</p>
+            <p>
+              <strong>Owner:</strong> {ownership.owner}
+            </p>
+            <p>
+              <strong>Token ID:</strong> {ownership.tokenID}
+            </p>
+            <p>
+              <strong>Metadata:</strong> {ownership.metadata}
+            </p>
           </div>
         )}
         {error && <p className="text-red-600 mt-4">{error}</p>}
