@@ -10,18 +10,23 @@ import {
   Wallet,
   Lock,
 } from "lucide-react";
+import useSBTApi from "@/hooks/userSBT";
+
 const MintSbt = () => {
+  const { mintSBT } = useSBTApi();
   const [recipientAddress, setRecipientAddress] = useState("");
+  const [userName, setUserName] = useState("");
+  const [organization, setOrganization] = useState("");
+  const [dateOfIssue, setDateOfIssue] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState({ status: "", message: "" });
   const FIXED_WALLET = "4a52d4fcba8de350ab1bf869b163d7e9fd07c541";
-  const API_KEY =
-    "6afc71753077b8204e941ef3ef52a5673dfa3bcd5abde5328f707ea0ade370422de156d108780a6f8897a577038192c13ffa78d81cf46e442eec758d51c66134bb6003";
+
   const handleMint = async () => {
-    if (!recipientAddress) {
+    if (!recipientAddress || !userName || !organization || !dateOfIssue) {
       setResult({
         status: "error",
-        message: "Please enter recipient address",
+        message: "All fields are required. Please fill in the form completely.",
       });
       return;
     }
@@ -29,72 +34,108 @@ const MintSbt = () => {
     setLoading(true);
     setResult({ status: "", message: "" });
 
-    const payload = {
-      network: "TESTNET",
-      blockchain: "KALP",
-      walletAddress: FIXED_WALLET,
-      args: {
-        address: recipientAddress,
-      },
-    };
-
     try {
-      const response = await fetch(
-        "https://gateway-api.kalp.studio/v1/contract/kalp/invoke/GHLDxsJqFi0w0OHPSehidrgd6ZTXFdV11732685112304/MintSBT",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-api-key": API_KEY, // Changed to correct header name
-            Accept: "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
+      const response = await mintSBT(
+        recipientAddress,
+        userName,
+        organization,
+        dateOfIssue
       );
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(
-          errorData.message || `HTTP error! status: ${response.status}`
-        );
+      if (response.error) {
+        throw new Error(response.message || "Failed to mint certification.");
       }
 
-      await response.json();
       setResult({
         status: "success",
         message:
           "Certification SBT minted successfully! Your achievement is now permanently recorded on the blockchain.",
       });
       setRecipientAddress("");
+      setUserName("");
+      setOrganization("");
+      setDateOfIssue("");
     } catch (error) {
       console.error("Mint error:", error);
       setResult({
         status: "error",
         message:
-          error instanceof Error && error.message === "AUTH_ERROR"
-            ? "Authentication failed. Please check API key."
-            : error instanceof Error
+          error instanceof Error
             ? error.message
-            : "Failed to mint certification. Please try again.",
+            : "An unexpected error occurred. Please try again.",
       });
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <div className="min-h-screen">
       <Navbar2 />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 px-4 py-4">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-xl ml-5">
+          <div className="bg-white rounded-2xl shadow-xl py-4 px-8">
+            {/* User Name Input */}
+            <div className="mt-4">
+              <label className="block text-sm font-medium mb-2 text-black">
+                User Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
+                placeholder="Enter user name"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+            </div>
 
-          {/* Main Card */}
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            {/* System Wallet Display */}
-            <div className="mb-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
+            {/* Organization Input */}
+            <div className="mt-4">
+              <label className="block text-sm font-medium mb-2 text-black">
+                Organization <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
+                placeholder="Enter organization"
+                value={organization}
+                onChange={(e) => setOrganization(e.target.value)}
+              />
+            </div>
+
+            {/* Date of Issue Input */}
+            <div className="mt-4">
+              <label className="block text-sm font-medium mb-2 text-black">
+                Date of Issue <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="date"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
+                value={dateOfIssue}
+                onChange={(e) => setDateOfIssue(e.target.value)}
+              />
+            </div>
+            {/* Recipient Address Input */}
+            <div>
+              <label className="block text-sm font-medium my-2 text-black">
+                Recipient Address <span className="text-red-500">*</span>
+              </label>
+              <div className="relative">
+                <Wallet className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 h-5 w-5" />
+                <input
+                  type="text"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
+                  placeholder="Enter recipient's wallet address"
+                  value={recipientAddress}
+                  onChange={(e) => setRecipientAddress(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="my-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
               <div className="flex items-center mb-2">
                 <Lock className="h-5 w-5 text-gray-500 mr-2" />
                 <h3 className="font-medium text-gray-700">
-                  Issuer Wallet Address
+                  Issuer Wallet Address (University)
                 </h3>
               </div>
               <div className="bg-white p-3 rounded border border-gray-200">
@@ -104,33 +145,22 @@ const MintSbt = () => {
               </div>
             </div>
 
-            {/* Recipient Address Input */}
-            <div>
-              <label className="block text-sm font-medium mb-2 text-black">
-                Recipient Address
-                <span className="text-red-500 ml-1">*</span>
-              </label>
-              <div className="relative">
-                <Wallet className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 h-5 w-5" />
-                <input
-                  type="text"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
-                  placeholder="Enter recipient's wallet address"
-                  value={recipientAddress}
-                  onChange={(e) => setRecipientAddress(e.target.value)}
-                />
-              </div>
-              <p className="mt-1 text-sm text-gray-500">
-                Enter the wallet address that will receive the certification
-              </p>
-            </div>
-
             {/* Mint Button */}
             <button
               onClick={handleMint}
-              disabled={!recipientAddress || loading}
+              disabled={
+                !recipientAddress ||
+                !userName ||
+                !organization ||
+                !dateOfIssue ||
+                loading
+              }
               className={`mt-8 w-full flex items-center justify-center space-x-2 py-3 px-4 rounded-lg text-white font-medium ${
-                !recipientAddress || loading
+                !recipientAddress ||
+                !userName ||
+                !organization ||
+                !dateOfIssue ||
+                loading
                   ? "bg-gray-400 cursor-not-allowed"
                   : "bg-indigo-600 hover:bg-indigo-700 transition-colors"
               }`}
@@ -203,26 +233,6 @@ const MintSbt = () => {
                 </div>
               </div>
             )}
-
-            {/* Network Info */}
-            <div className="mt-8 pt-6 border-t border-gray-200">
-              <div className="grid grid-cols-2 gap-4 text-sm text-gray-500">
-                <div>
-                  <span className="font-medium">Network:</span> TESTNET
-                </div>
-                <div>
-                  <span className="font-medium">Blockchain:</span> KALP
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer Info */}
-          <div className="mt-8 text-center text-sm text-gray-500">
-            <p>
-              This certification is permanent and immutable on the blockchain.
-            </p>
-            <p>Please verify the recipient address carefully before minting.</p>
           </div>
         </div>
       </div>

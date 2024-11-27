@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Award } from "lucide-react";
 const Navbar2 = () => (
-  <div className="p-4 bg-white text-black">
+  <div className="py-2 px-4 bg-white text-black">
     <div className="container mx-auto gap-4 flex justify-between items-center">
       <h1 className="text-3xl font-mono font-extrabold flex items-center justify-center gap-2 text-[#283593]">
         <Award className="h-9 w-9 text-[#283593]" />
@@ -16,7 +16,7 @@ const Navbar2 = () => (
         <Link href="/mint-sbt">Mint SBt</Link>
       </div>
       <button className="bg-zinc-950 border-2 text-white font-mono rounded-full py-3 px-5 hover:rounded-2xl">
-        <Link href="/getStarted">Get Started</Link>
+        <Link href="/block">Get Started</Link>
       </button>
     </div>
   </div>

@@ -30,7 +30,7 @@ function GetStarted() {
           description={"Enter to issue a cetificate to a candidate"}
           svgr="/GraduateCap.svg"
           content={certifyOptions}
-          path="/issueCertificate"
+          path="/mint-sbt"
         />
       </div>
     </>
