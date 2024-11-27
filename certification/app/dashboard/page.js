@@ -1,10 +1,11 @@
 // pages/index.js
-import Navbar from "../../src/components/Navbar/Navbar";
+import Navbar2 from "../components/Navbar/Navbar2";
 
 export default function Dashboard() {
   return (
     <div>
-      <Navbar />
+      <Navbar2 />
+
       <main className="container mx-auto p-6 text-center">
         <h2 className="text-2xl font-bold">
           Welcome to the SBT Certification System

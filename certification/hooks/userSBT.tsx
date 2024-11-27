@@ -2,10 +2,10 @@
 const useSBTApi = () => {
   const baseURL = "https://gateway-api.kalp.studio/v1/contract/kalp";
   const fixedWallet = "4a52d4fcba8de350ab1bf869b163d7e9fd07c541";
-  const initialize = async (metadata: string) => {
+  const initialize = async (description: string) => {
     try {
       const response = await fetch(
-        `${baseURL}/invoke/m3lRvq9nyt6yJXXSPWkhMh2E3VdTaXk31732623176648/Initialize`,
+        `${baseURL}/invoke/GHLDxsJqFi0w0OHPSehidrgd6ZTXFdV11732685112304/Initialize`,
         {
           method: "POST",
           headers: {
@@ -17,7 +17,7 @@ const useSBTApi = () => {
             blockchain: "KALP",
             walletAddress: fixedWallet,
             args: {
-              metadata,
+              description,
             },
           }),
         }
@@ -28,10 +28,15 @@ const useSBTApi = () => {
     }
   };
 
-  const mintSBT = async (recipientAddress: string) => {
+  const mintSBT = async (
+    recipientAddress: string,
+    user_name: string,
+    organization: string,
+    date_of_issue: string
+  ) => {
     try {
       const response = await fetch(
-        `${baseURL}/invoke/m3lRvq9nyt6yJXXSPWkhMh2E3VdTaXk31732623176648/MintSBT`,
+        `${baseURL}/invoke/GHLDxsJqFi0w0OHPSehidrgd6ZTXFdV11732685112304/MintSBT`,
         {
           method: "POST",
           headers: {
@@ -44,6 +49,9 @@ const useSBTApi = () => {
             walletAddress: fixedWallet,
             args: {
               address: recipientAddress,
+              name: user_name,
+              organization: organization,
+              dateOfIssue: date_of_issue,
             },
           }),
         }
@@ -57,7 +65,7 @@ const useSBTApi = () => {
   const querySBT = async (owner: string, tokenId: string) => {
     try {
       const response = await fetch(
-        `${baseURL}/query/m3lRvq9nyt6yJXXSPWkhMh2E3VdTaXk31732623176648/QuerySBT`,
+        `${baseURL}/query/GHLDxsJqFi0w0OHPSehidrgd6ZTXFdV11732685112304/QuerySBT`,
         {
           method: "POST",
           headers: {
@@ -84,7 +92,7 @@ const useSBTApi = () => {
   const getSBTByOwner = async (owner: string) => {
     try {
       const response = await fetch(
-        `${baseURL}/query/m3lRvq9nyt6yJXXSPWkhMh2E3VdTaXk31732623176648/GetSBTByOwner`,
+        `${baseURL}/query/GHLDxsJqFi0w0OHPSehidrgd6ZTXFdV11732685112304/GetSBTByOwner`,
         {
           method: "POST",
           headers: {
@@ -110,7 +118,7 @@ const useSBTApi = () => {
   const getAllTokenIDs = async () => {
     try {
       const response = await fetch(
-        `${baseURL}/query/m3lRvq9nyt6yJXXSPWkhMh2E3VdTaXk31732623176648/GetAllTokenIDs`,
+        `${baseURL}/query/GHLDxsJqFi0w0OHPSehidrgd6ZTXFdV11732685112304/GetAllTokenIDs`,
         {
           method: "POST",
           headers: {
@@ -133,7 +141,7 @@ const useSBTApi = () => {
   const attemptTransfer = async (from: string, to: string, tokenId: string) => {
     try {
       const response = await fetch(
-        `${baseURL}/query/m3lRvq9nyt6yJXXSPWkhMh2E3VdTaXk31732623176648/TransferSBT`,
+        `${baseURL}/query/GHLDxsJqFi0w0OHPSehidrgd6ZTXFdV11732685112304/TransferSBT`,
         {
           method: "POST",
           headers: {
