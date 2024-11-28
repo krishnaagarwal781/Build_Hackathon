@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import Navbar2 from "../components/Navbar/Navbar2";
+import Certificate from "../components/Certificate/Certificate";
 import {
   AlertCircle,
   CheckCircle2,
-  Award,
   ChevronRight,
   Wallet,
   Lock,
@@ -72,8 +72,8 @@ const MintSbt = () => {
   return (
     <div className="min-h-screen">
       <Navbar2 />
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 px-4 py-4">
-        <div className="max-w-xl ml-5">
+      <div className="flex gap-8 h-[90vh] bg-gradient-to-br from-blue-50 to-indigo-50 px-4 py-4">
+        <div className="w-1/3 ml-16">
           <div className="bg-white rounded-2xl shadow-xl py-4 px-8">
             {/* User Name Input */}
             <div className="mt-4">
@@ -97,9 +97,9 @@ const MintSbt = () => {
               <input
                 type="text"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
-                placeholder="Enter organization"
+                placeholder="Institute Of Engineering"
                 value={organization}
-                onChange={(e) => setOrganization(e.target.value)}
+                onChange={() => setOrganization("Institute Of Engineering")}
               />
             </div>
 
@@ -115,13 +115,15 @@ const MintSbt = () => {
                 onChange={(e) => setDateOfIssue(e.target.value)}
               />
             </div>
+
             {/* Recipient Address Input */}
-            <div>
-              <label className="block text-sm font-medium my-2 text-black">
-                Recipient Address <span className="text-red-500">*</span>
+            <div className="mt-4">
+              <label className="block text-sm font-medium mb-2 text-black">
+                Student's Wallet Address (Recipent){" "}
+                <span className="text-red-500">*</span>
               </label>
               <div className="relative">
-                <Wallet className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 h-5 w-5" />
+                <Wallet className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-700 h-5 w-5" />
                 <input
                   type="text"
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
@@ -130,18 +132,18 @@ const MintSbt = () => {
                   onChange={(e) => setRecipientAddress(e.target.value)}
                 />
               </div>
-            </div>
-            <div className="my-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <div className="flex items-center mb-2">
-                <Lock className="h-5 w-5 text-gray-500 mr-2" />
-                <h3 className="font-medium text-gray-700">
-                  Issuer Wallet Address (University)
-                </h3>
-              </div>
-              <div className="bg-white p-3 rounded border border-gray-200">
-                <code className="text-sm text-gray-600 break-all">
-                  {FIXED_WALLET}
-                </code>
+              <div className="my-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <div className="flex items-center mb-2">
+                  <Lock className="h-5 w-5 text-gray-500 mr-2" />
+                  <h3 className="font-medium text-gray-700">
+                    Unviversity Wallet Address (Issuer)
+                  </h3>
+                </div>
+                <div className="bg-white p-3 rounded border border-gray-200">
+                  <code className="text-sm text-gray-600 break-all">
+                    {FIXED_WALLET}
+                  </code>
+                </div>
               </div>
             </div>
 
@@ -190,51 +192,34 @@ const MintSbt = () => {
                   <span>Minting Certificate...</span>
                 </div>
               ) : (
-                <>
-                  <span>Issue Certification</span>
-                  <ChevronRight className="h-5 w-5" />
-                </>
+                <span>Issue Certification</span>
               )}
             </button>
 
             {/* Result Alert */}
             {result.status && (
-              <div
-                className={`mt-6 p-4 rounded-lg ${
-                  result.status === "success" ? "bg-green-50" : "bg-red-50"
-                }`}
-              >
-                <div className="flex items-start">
-                  {result.status === "success" ? (
-                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5" />
-                  ) : (
-                    <AlertCircle className="h-5 w-5 text-red-600 mt-0.5" />
-                  )}
-                  <div className="ml-3">
-                    <h3
-                      className={`text-sm font-medium ${
-                        result.status === "success"
-                          ? "text-green-800"
-                          : "text-red-800"
-                      }`}
-                    >
-                      {result.status === "success" ? "Success!" : "Error"}
-                    </h3>
-                    <p
-                      className={`mt-1 text-sm ${
-                        result.status === "success"
-                          ? "text-green-700"
-                          : "text-red-700"
-                      }`}
-                    >
-                      {result.message}
-                    </p>
-                  </div>
-                </div>
+              <div className="mt-6">
+                <p
+                  className={`${
+                    result.status === "success"
+                      ? "text-green-600"
+                      : "text-red-600"
+                  }`}
+                >
+                  {result.message}
+                </p>
               </div>
             )}
           </div>
         </div>
+
+        <Certificate
+          title="College Degree"
+          name={userName || "Your Name"}
+          date={dateOfIssue || "Date"}
+          hash={recipientAddress || "Recipient Address"}
+          college={organization || "IEM"}
+        />
       </div>
     </div>
   );
