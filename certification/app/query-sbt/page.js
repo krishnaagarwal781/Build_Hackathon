@@ -21,7 +21,7 @@ export default function QueryCertificate() {
         setError("Certificate not found or invalid details.");
       }
     } catch (err) {
-      setError("An error occurred while querying the certificate.");
+      setError("An error occurred while querying the certificate.",err);
     }
   };
 

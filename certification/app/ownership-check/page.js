@@ -28,7 +28,7 @@ export default function OwnershipChecker() {
         try {
           parsedMetadata = JSON.parse(response.result.result.metadata);
         } catch (parseError) {
-          setError("Failed to parse metadata.");
+          setError("Failed to parse metadata.",parseError);
           return;
         }
 
@@ -42,7 +42,7 @@ export default function OwnershipChecker() {
         setError("No certificate found for this owner.");
       }
     } catch (err) {
-      setError("An error occurred while checking ownership.");
+      setError("An error occurred while checking ownership.",err);
     }
   };
 

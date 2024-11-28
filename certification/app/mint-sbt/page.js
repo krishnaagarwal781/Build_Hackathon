@@ -3,13 +3,7 @@
 import React, { useState } from "react";
 import Navbar2 from "../components/Navbar/Navbar2";
 import Certificate from "../components/Certificate/Certificate";
-import {
-  AlertCircle,
-  CheckCircle2,
-  ChevronRight,
-  Wallet,
-  Lock,
-} from "lucide-react";
+import { Wallet, Lock } from "lucide-react";
 import useSBTApi from "@/hooks/userSBT";
 
 const MintSbt = () => {
@@ -127,7 +121,7 @@ const MintSbt = () => {
                 <input
                   type="text"
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
-                  placeholder="Enter recipient's wallet address"
+                  placeholder="Enter recipient s wallet address"
                   value={recipientAddress}
                   onChange={(e) => setRecipientAddress(e.target.value)}
                 />
