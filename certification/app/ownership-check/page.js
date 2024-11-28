@@ -121,15 +121,15 @@ export default function OwnershipChecker() {
             </div>
 
             {/* Dynamic Title */}
-            <div className="text-center mt-2">
+            <div className="text-center mt-4">
               <h2 className="font-bold text-xl md:text-3xl text-black">
-                {ownership.metadata.name || "Award"}
+              {ownership.metadata.description || "No description provided."}
               </h2>
               <hr className="mt-2 w-3/4 md:w-2/3 mx-auto border-t-2 border-black" />
             </div>
 
             {/* Awarded By */}
-            <div className="text-center mt-2">
+            <div className="text-center mt-4">
               <p className="text-md md:text-lg text-black">from</p>
               <h3 className="font-bold text-lg md:text-2xl text-black mt-4">
                 {ownership.metadata.organization || "College Name"}
@@ -138,25 +138,16 @@ export default function OwnershipChecker() {
             </div>
 
             {/* Awarded To */}
-            <div className="text-center mt-2">
+            <div className="text-center mt-4">
               <p className="text-md md:text-lg text-black">awarded to</p>
               <h3 className="font-bold text-lg md:text-2xl text-black mt-4">
                 {ownership.metadata.name || "Recipient Name"}
               </h3>
               <hr className="mt-2 w-4/5 md:w-3/4 mx-auto border-t-2 border-black" />
             </div>
-
-            {/* Description */}
-            <div className="text-center mt-2">
-              <p className="text-md md:text-lg text-black">Description</p>
-              <p className="text-md md:text-lg text-black mt-2">
-                {ownership.metadata.description || "No description provided."}
-              </p>
-              <hr className="mt-2 w-1/2 mx-auto border-t-2 border-black" />
-            </div>
-
+      
             {/* Date of Issue */}
-            <div className="text-center mt-2">
+            <div className="text-center mt-4">
               <p className="text-lg md:text-xl text-black">on</p>
               <p className="text-md md:text-lg text-black mt-2">
                 {ownership.metadata.dateOfIssue || "Date of Issue"}
