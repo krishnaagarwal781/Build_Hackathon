@@ -62,7 +62,7 @@ export default function Dashboard() {
             ensuring the validity of the credential.
             <br />
             Certificates can also be downloaded and/or sent directly to the
-            recipient's email for added convenience.
+            recipient s email for added convenience.
             <br />
             <br />
           </p>

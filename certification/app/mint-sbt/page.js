@@ -113,7 +113,7 @@ const MintSbt = () => {
             {/* Recipient Address Input */}
             <div className="mt-4">
               <label className="block text-sm font-medium mb-2 text-black">
-                Student's Wallet Address (Recipent){" "}
+                Student s Wallet Address (Recipent){" "}
                 <span className="text-red-500">*</span>
               </label>
               <div className="relative">
