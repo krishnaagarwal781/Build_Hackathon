@@ -7,11 +7,9 @@ function GetStarted() {
     "Verify the certificate authenticity",
     "Look up the certificate details",
   ];
-  const certifyOptions = [
-    "Issue a Certificate",
-    "Preview the certificate",
-  ];
+  const certifyOptions = ["Issue a Certificate", "Preview the certificate"];
   const navHidden = true;
+
   return (
     <>
       <Navbar />
@@ -23,15 +21,25 @@ function GetStarted() {
           }
           svgr="/CertificateLogo.svg"
           content={verifyOptions}
-          path="/verifyCertificate"
+          path="/ownership-check"
         />
         <Container
           title={"Issue Certificate"}
-          description={"Enter to issue a cetificate to a candidate"}
+          description={"Enter to issue a certificate to a candidate"}
           svgr="/GraduateCap.svg"
           content={certifyOptions}
           path="/mint-sbt"
         />
+      </div>
+      <div className="flex flex-col lg:flex-row w-full justify-around mt-6">
+        <div className="w-full max-w-xs text-center">
+          <h3 className="font-bold text-lg text-black mb-2">APIs used in Verify Certificate:</h3>
+          <p className="text-sm text-gray-600">querySBT, getSBTByOwner</p>
+        </div>
+        <div className="w-full max-w-xs text-center mt-4 lg:mt-0">
+          <h3 className="font-bold text-lg text-black mb-2">APIs used in Issue Certificate:</h3>
+          <p className="text-sm text-gray-600">mintSBT</p>
+        </div>
       </div>
     </>
   );
