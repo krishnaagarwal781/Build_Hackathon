@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Navbar from "../components/Navbar/Navbar";
+import Navbar2 from "../components/Navbar/Navbar2";
 import useSBTApi from "../../hooks/userSBT";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -50,7 +50,7 @@ export default function TransferSBT() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar2 />
       <main className="container mx-auto p-6">
         <h2 className="text-2xl font-bold mb-4">Transfer Ownership of Soulbound Token</h2>
 

@@ -72,7 +72,7 @@ const MintSbt = () => {
   return (
     <div className="min-h-screen">
       <Navbar2 />
-      <div className="flex gap-8 h-[90vh] bg-gradient-to-br from-blue-50 to-indigo-50 px-4 py-4">
+      <div className="flex gap-8 h-[100vh] bg-gradient-to-br from-blue-50 to-indigo-50 px-4 py-4">
         <div className="w-1/3 ml-16">
           <div className="bg-white rounded-2xl shadow-xl py-4 px-8">
             {/* User Name Input */}

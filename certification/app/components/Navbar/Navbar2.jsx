@@ -9,11 +9,27 @@ const Navbar2 = () => (
       </h1>
       <div className="flex flex-wrap rounded-xl px-1 py-1 appearance-none">
         <div className="font-medium text-lg flex flex-row justify-between w-full transition-colors duration-500 ease-in-out">
-          <Link href="/all-sbt" className="relative px-4 py-2 mx-2 hover:bg-zinc-950 transition-colors duration-200 ease-in-out hover:text-white rounded-xl font-mono font-bold">All SBT</Link>
-          <Link href="/transfer-sbt" className="relative px-4 py-2 mx-2 hover:bg-zinc-950 transition-colors duration-200 ease-in-out hover:text-white rounded-xl font-mono font-bold">Transfer SBT</Link>
+          <Link
+            href="/all-sbt"
+            className="relative px-4 py-2 mx-2 hover:bg-zinc-950 transition-colors duration-200 ease-in-out hover:text-white rounded-xl font-mono font-bold"
+          >
+            All SBT
+          </Link>
+          <Link
+            href="/block"
+            className="relative px-4 py-2 mx-2 hover:bg-zinc-950 transition-colors duration-200 ease-in-out hover:text-white rounded-xl font-mono font-bold"
+          >
+            Issue/Verify SBT
+          </Link>
+          <Link
+            href="/transfer-sbt"
+            className="relative px-4 py-2 mx-2 hover:bg-zinc-950 transition-colors duration-200 ease-in-out hover:text-white rounded-xl font-mono font-bold"
+          >
+            Transfer SBT
+          </Link>
         </div>
       </div>
-      
+
       <button className="bg-zinc-950 border-2 text-white font-mono rounded-2xl py-3 px-5">
         <Link href="">Connected</Link>
       </button>
