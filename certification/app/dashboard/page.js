@@ -39,7 +39,7 @@ export default function Dashboard() {
             certificates using the innovative concept of Soulbound Tokens
             (SBTs). SBTs are non-transferable digital tokens designed to
             represent unique, verifiable achievements, credentials, or
-            affiliations tied to an individual's blockchain identity. This
+            affiliations tied to an individual s blockchain identity. This
             ensures authenticity, eliminates forgery, and safeguards certificate
             integrity.
             <br />

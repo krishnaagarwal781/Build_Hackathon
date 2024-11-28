@@ -66,4 +66,7 @@ const Certificate = forwardRef((props, ref) => {
   );
 });
 
+// Add a displayName to the component
+Certificate.displayName = "Certificate";
+
 export default Certificate;

@@ -8,7 +8,6 @@ function GetStarted() {
     "Look up the certificate details",
   ];
   const certifyOptions = ["Issue a Certificate", "Preview the certificate"];
-  const navHidden = true;
 
   return (
     <>

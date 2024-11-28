@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import Navbar2 from "../components/Navbar/Navbar2";
 import useSBTApi from "../../hooks/userSBT";
@@ -15,14 +15,14 @@ export default function AllSBTs() {
       setError("");
       try {
         const response = await getAllTokenIDs();
-        console.log(response)
+        console.log(response);
         if (response.result.success) {
           setTokenIDs(response.result.result);
         } else {
           setError("Failed to fetch SBT IDs.");
         }
       } catch (err) {
-        setError("An error occurred while fetching SBT IDs.");
+        setError("An error occurred while fetching SBT IDs.", err);
       } finally {
         setLoading(false);
       }
@@ -35,7 +35,9 @@ export default function AllSBTs() {
     <div>
       <Navbar2 />
       <main className="container mx-auto p-6">
-        <h2 className="text-2xl font-bold mb-4">All Soulbound Tokens Issued By University</h2>
+        <h2 className="text-2xl font-bold mb-4">
+          All Soulbound Tokens Issued By University
+        </h2>
         {loading ? (
           <p className="text-blue-600">Loading SBT IDs...</p>
         ) : error ? (
