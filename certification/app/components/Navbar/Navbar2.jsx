@@ -7,14 +7,13 @@ const Navbar2 = () => (
         <Award className="h-7 w-7 text-[#283593]" />
         <Link href="/">Certify</Link>
       </h1>
-      <div className="flex gap-4">
-        <Link href="/">Dashboard</Link>
-        <Link href="/query-sbt">Query Certificate</Link>
-        <Link href="/ownership-check">Ownership Checker</Link>
-        <Link href="/all-sbt">All id</Link>
-        <Link href="/transfer-sbt">Transfer SBt id</Link>
-        <Link href="/mint-sbt">Mint SBt</Link>
+      <div className="flex flex-wrap rounded-xl px-1 py-1 appearance-none">
+        <div className="font-medium text-lg flex flex-row justify-between w-full transition-colors duration-500 ease-in-out">
+          <Link href="/all-sbt" className="relative px-4 py-2 mx-2 hover:bg-zinc-950 transition-colors duration-200 ease-in-out hover:text-white rounded-xl font-mono font-bold">All SBT</Link>
+          <Link href="/transfer-sbt" className="relative px-4 py-2 mx-2 hover:bg-zinc-950 transition-colors duration-200 ease-in-out hover:text-white rounded-xl font-mono font-bold">Transfer SBT</Link>
+        </div>
       </div>
+      
       <button className="bg-zinc-950 border-2 text-white font-mono rounded-2xl py-3 px-5">
         <Link href="">Connected</Link>
       </button>
